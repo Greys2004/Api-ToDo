@@ -25,6 +25,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DB: ${MYSQL_DB}
       MYSQL_HOST: mysql
+    image: greys04/todo-app
 
 volumes:
   mysql_todo_app:
