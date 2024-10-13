@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql_container
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: todo_list
+    volumes:
+      - mysql_incident_app:/var/lib/mysql
+
+  # todo-app:
+  #   build:
+  #     context: .
+  #   container_name: todo_app
+  #   ports:
+  #     - "3005:3000"
+  #   depends_on:
+  #     - mysql
+  #   environment:
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #     MYSQL_DB: ${MYSQL_DB}
+  #     MYSQL_HOST: mysql
+
+volumes:
+  mysql_incident_app:
