@@ -1,5 +1,5 @@
-version: '3.8'
-
+#levantar (iniciar) y conectar dos contenedores de Docker: 
+#uno para MySQL (la base de datos) y otro para una aplicación llamada todo-app
 services:
   mysql:
     image: mysql
@@ -10,21 +10,21 @@ services:
       MYSQL_ROOT_PASSWORD: 12345
       MYSQL_DATABASE: todo_list
     volumes:
-      - mysql_incident_app:/var/lib/mysql
+      - mysql_todo_app:/var/lib/mysql
 
-  # todo-app:
-  #   build:
-  #     context: .
-  #   container_name: todo_app
-  #   ports:
-  #     - "3005:3000"
-  #   depends_on:
-  #     - mysql
-  #   environment:
-  #     MYSQL_USER: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #     MYSQL_DB: ${MYSQL_DB}
-  #     MYSQL_HOST: mysql
+  todo-app:
+    build:
+      context: .
+    container_name: todo_app
+    ports:
+      - "3005:3000"
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DB: ${MYSQL_DB}
+      MYSQL_HOST: mysql
 
 volumes:
-  mysql_incident_app:
+  mysql_todo_app:

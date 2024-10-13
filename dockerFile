@@ -1,3 +1,4 @@
+#Define las instrucciones para construir una imagen Docker.
 #Imagen Base
 FROM node
 
