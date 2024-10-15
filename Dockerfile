@@ -20,6 +20,6 @@ RUN npm run build
 
 #Comando de inicio de contenedor
 #No se ejecuta hasta que el contenedor se levanta
-CMD ["node", "dist/src/index.js"]
+CMD ["node", "dist/server.js"]
 
 
