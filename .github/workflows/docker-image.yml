@@ -27,14 +27,14 @@ jobs:
     
     # Constuir la imagen Docker con el tag de greys04/todoApp con un commit unico en el directorio actual (.)
       - name: Build Docker Image
-        run: docker build -t greys04/incident-app:${{github.sha}} .
+        run: docker build -t greys04/todo-app:${{github.sha}} .
 
     #Asigna la etiqueta latest a la imagen que se acaba de compilar para identificar la versión más reciente de la imagen.
       - name: Tag Latest
-        run: docker tag greys04/incident-app:${{github.sha}} greys04/incident-app:latest
+        run: docker tag greys04/todo-app:${{github.sha}} greys04/todo-app:latest
 
     #ube la imagen a Docker Hub con ambas etiquetas: una para el commit específico (${{github.sha}}) y otra como latest.
       - name: Push Docker Image
         run: |
-          docker push greys04/incident-app:${{github.sha}}
-          docker push greys04/incident-app:latest
+          docker push greys04/todo-app:${{github.sha}}
+          docker push greys04/todo-app:latest
