@@ -13,6 +13,8 @@ services:
       - mysql_todo_app:/var/lib/mysql
 
   todo-app:
+    # build:
+    #   context: .
     container_name: todo_app
     ports:
       - "3005:3000"
@@ -23,7 +25,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DB: ${MYSQL_DB}
       MYSQL_HOST: mysql
-    image: greys04/todo-app:latest
+      MYSQL_PORT: ${MYSQL_PORT_DOCKER}
+    image: greys04/todo-app
 
 volumes:
   mysql_todo_app:
