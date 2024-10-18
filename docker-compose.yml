@@ -5,28 +5,26 @@ services:
     image: mysql
     container_name: mysql_container
     ports:
-      - "3309:3306"
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: 12345
-      MYSQL_DATABASE: todo_list
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql_todo_app:/var/lib/mysql
-
-  todo-app:
-    # build:
-    #   context: .
-    container_name: todo_app
+      - mysql_incident_app:/var/lib/mysql
+  
+  incident-app:
+    image: greys04/todo-app:latest
+    container_name: todo-list
     ports:
       - "3005:3000"
-    depends_on:
-      - mysql
     environment:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DB: ${MYSQL_DB}
       MYSQL_HOST: mysql
-      MYSQL_PORT: ${MYSQL_PORT_DOCKER}
-    image: greys04/todo-app
-
+      MYSQL_PORT: 3306
+    depends_on:
+      - mysql
+ 
+ 
 volumes:
-  mysql_todo_app:
+  mysql_incident_app:
